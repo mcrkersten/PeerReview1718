@@ -5,6 +5,8 @@ using UnityEditor;
 
 public class HotspotPositionCalc : MonoBehaviour {
 
+    //test 
+
 	[Range(1,500)]
 	public float distance = 1f;
 	[Range(0,180)]
