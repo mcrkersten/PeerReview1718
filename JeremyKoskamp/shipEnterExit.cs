@@ -8,9 +8,9 @@ public class ShipEnterExit : MonoBehaviour {
     public Transform exitPos;
     public GameObject player;
 
-    public bool inBoat{
-        get{ return inBoat; }
-        set{ inBoat = value; }
+    public bool inBoat {
+        get { return inBoat; }
+        set { inBoat = value; }
     }
 
     public float timeToInsure{
@@ -21,14 +21,14 @@ public class ShipEnterExit : MonoBehaviour {
     
 
 
-    void Start(){
+    void Start() {
         inBoat = false; //Bool for checking if player is in the boat.
     }
 
 
     void Update(){
         //Exit Boat on keypress
-        if (Input.GetKey(KeyCode.E) && inBoat == true){
+        if (Input.GetKey(KeyCode.E) && inBoat == true) {
             player.GetComponent<Rigidbody>().WakeUp();
             player.GetComponent<characterController>().enabled = true;
             player.GetComponent<Transform>().position = exitPos.position;
@@ -38,19 +38,19 @@ public class ShipEnterExit : MonoBehaviour {
     }
 
 
-    void OnTriggerEnter(Collider other){
-        if(other.tag == "exitPos"){
+    void OnTriggerEnter(Collider other) {
+        if (other.tag == "exitPos") {
             exitPos = other.GetComponentInParent<Transform>();
         }
     }
 
 
-    void OnTriggerStay (Collider other){
+    void OnTriggerStay (Collider other) {
         //Checks if colission is with player.
-        if(other.tag == "Player"){
+        if (other.tag == "Player") {
             //Enter Boat on keypress
-            if (Input.GetKey(KeyCode.E) && inBoat == false){
-                other.GetComponent<Transform>().position = sitPos.transform.position + new Vector3(0,1,0);
+            if (Input.GetKey(KeyCode.E) && inBoat == false) {
+                other.GetComponent<Transform>().position = sitPos.transform.position + new Vector3(0, 1, 0);
                 other.GetComponent<Transform>().rotation = sitPos.transform.rotation;
                 other.gameObject.transform.parent = this.gameObject.transform;
                 other.GetComponent<characterController>().enabled = false;
@@ -62,7 +62,7 @@ public class ShipEnterExit : MonoBehaviour {
 
 
     //Timer to prevent instant exiting.
-    IEnumerator Waiting(){
+    IEnumerator Waiting() {
         yield return new WaitForSeconds(timeToInsure);
         inBoat = true;
     }
