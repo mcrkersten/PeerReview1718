@@ -10,37 +10,7 @@ public class GlobalFlock : MonoBehaviour {
     private GameObject[] allFish;
     private Vector3 goalPos = Vector3.zero;
 
-
-    public GameObject FishPrefab {
-        get { return fishPrefab; }
-        set { fishPrefab = value; }
-    }
-
-
-    public Vector3 TankSize {
-        get { return tankSize; }
-        set { tankSize = value; }
-    }
-
-
-    public int NumFish {
-        get { return numFish; }
-        set { if (value >= 0) numFish = value; }
-    }
-
-
-    public GameObject[] AllFish {
-        get { return allFish; }
-        set { allFish = value; }
-    }
-
-
-    public Vector3 GoalPos {
-        get { return goalPos; }
-        set { goalPos = value; }
-    }
-
-
+    
     private void OnDrawGizmosSelected() {
         Gizmos.color = new Color(1, 0, 0, 0.5f);
         Gizmos.DrawCube(transform.position, new Vector3(tankSize.x * 2, tankSize.y * 2, tankSize.z * 2));
@@ -71,6 +41,41 @@ public class GlobalFlock : MonoBehaviour {
                                         Random.Range(gameObject.transform.position.y - tankSize.y, gameObject.transform.position.y + tankSize.y),
                                         Random.Range(gameObject.transform.position.z - tankSize.z, gameObject.transform.position.z + tankSize.z));
         }
+    }
+
+
+    public GameObject FishPrefab
+    {
+        get { return fishPrefab; }
+        set { fishPrefab = value; }
+    }
+
+
+    public Vector3 TankSize
+    {
+        get { return tankSize; }
+        set { tankSize = value; }
+    }
+
+
+    public int NumFish
+    {
+        get { return numFish; }
+        set { if (value >= 0) numFish = value; }
+    }
+
+
+    public GameObject[] AllFish
+    {
+        get { return allFish; }
+        set { allFish = value; }
+    }
+
+
+    public Vector3 GoalPos
+    {
+        get { return goalPos; }
+        set { goalPos = value; }
     }
 }
 
