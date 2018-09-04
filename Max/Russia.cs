@@ -11,37 +11,37 @@ namespace Maskirovka
 		private Color color;
 
 				
-		void Start () {
+		private void Start () {
 			color = GetComponent<SpriteRenderer>().color;
 		}
 
 
 		public bool InvadeCountry(Country country) {
-			bool isNeighbour = neighbours.FindAll(x => x.neighbour ==  country ).Count > 0;
+			bool isNeighbour = neighbours.FindAll(x => x.neighbour ==  country).Count > 0;
 			
-			if( isNeighbour == true ) {
+			if(isNeighbour == true) {
 				country.Invaded(this);
 			}
 			return isNeighbour;
 		}
 
 
-		public Color GetColor() {
-			return color;
-		}
-
-
 		public bool IsNeighbour(Country country) {
-			return neighbours.FindAll( x => x.neighbour == country).Count > 0;
+			return neighbours.FindAll(x => x.neighbour == country).Count > 0;
 		}
 
 
-		public void AddNeighbours( Neighbour[] newNeighbours ) {
-			foreach( Neighbour n in newNeighbours) {
+		public void AddNeighbours(Neighbour[] newNeighbours) {
+			foreach(Neighbour n in newNeighbours) {
 				if(neighbours.FindIndex(x => x.neighbour == n.neighbour) == -1) {
 					neighbours.Add(n);
 				}
 			}
 		}
-	}
+
+
+        public Color GetColor() {
+            return color;
+        }
+    }
 }
