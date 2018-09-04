@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Clean : MonoBehaviour{
+public class Clean : MonoBehaviour {
 
     public float range = 100f;
 
@@ -9,7 +9,7 @@ public class Clean : MonoBehaviour{
     private AudioSource cleanSoundSource;
 
 
-    private void Start(){
+    private void Start() {
         cleanSoundSource = GetComponent<AudioSource>();
         Physics.Raycast(transform.position,
                         transform.forward, 
@@ -19,7 +19,7 @@ public class Clean : MonoBehaviour{
     }
 
 
-    private void Update (){
+    private void Update () {
         lastSelected = selected;
 
         Physics.Raycast(transform.position, 
@@ -27,11 +27,11 @@ public class Clean : MonoBehaviour{
                         out selected, 
                         range);
 
-        if (selected.transform != null){
-            if (selected.transform.tag == "Interactable"){
+        if (selected.transform != null) {
+            if (selected.transform.tag == "Interactable") {
                 SelectMesh(selected.transform.GetComponentsInChildren<Renderer>(), true);
 
-                if (Input.GetMouseButtonDown(0)){
+                if (Input.GetMouseButtonDown(0)) {
                     cleanSoundSource.Play();
                     Destroy(selected.transform.gameObject);
                     Physics.Raycast(transform.position, 
@@ -47,8 +47,8 @@ public class Clean : MonoBehaviour{
     }
 
 
-    private void SelectMesh(Renderer [] toHighLight, bool select){
-        foreach(Renderer r in toHighLight){
+    private void SelectMesh(Renderer [] toHighLight, bool select) {
+        foreach(Renderer r in toHighLight) {
             if(select)
                 r.material.color = new Color(0, 0, 1);
             else
