@@ -3,7 +3,7 @@ using Assets.Pixelation.Example.Scripts;
 using System.Collections;
 
 public class Player : MonoBehaviour {
-	//REVOLUTIE VOOR DE HAAKJES PLZ!!
+	//REVOLUTIE VOOR DE HAAKJES PLZ!!!
 
 	public bool lockMouseMovement;
 	public MouseLook look;
