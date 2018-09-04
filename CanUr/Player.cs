@@ -10,13 +10,13 @@ public class Player : MonoBehaviour {
 
 	public Transform weapon;
 
-    public int health {
+    	public int health {
 		get;
 		set;
 	}
 
 	private Vector3 lastPos;
-    private int hurtDelay = 0;
+    	private int hurtDelay = 0;
 
 	void Start() {
 		health = 5;
@@ -44,21 +44,21 @@ public class Player : MonoBehaviour {
 		return disp.magnitude > 0.001;
 	}
 
-    public void hurt(int i) {
-        hurtDelay = 1;
-        health -= i;
+	public void hurt(int i) {
+		hurtDelay = 1;
+		health -= i;
 
-        if (health <= 0) {
-            health = 0;
-            die();
-        }
-    }
+		if (health <= 0) {
+		    health = 0;
+		    die();
+		}
+	}
 
-    public void die() {
-        lockMouseMovement = true;
-        GetComponent<CharacterMotor>().canControl = false;
-        GetComponent<MouseLook>().enabled = false;
+   	 public void die() {
+		lockMouseMovement = true;
+		GetComponent<CharacterMotor>().canControl = false;
+		GetComponent<MouseLook>().enabled = false;
 
-        transform.Find("Camera/Main Camera/Gun Camera").gameObject.SetActive(false);
-    }
+		transform.Find("Camera/Main Camera/Gun Camera").gameObject.SetActive(false);
+    	}
 }
