@@ -1,9 +1,3 @@
-/* 
-Hey boys die dit nakijken, ik ben vergeten wat er allemaal precies in de Style Guide stond, 
-maar ik kon mij nog wel herrineren dan ik uit mezelf toch al redelijk volgens onze style
-guide werkte. Hoop dat het zo goed is? Anders pas ik het nog wel aan zodra de style guide
-online gezet wordt. */
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +8,8 @@ public class playerController : MonoBehaviour {
     public float speed = 10.0f;
     public GameObject armPickup;
     public GameObject player;
+    public float translation;
+    public float straffe;
 
     // Use this for initialization
     void Start(){
@@ -24,15 +20,14 @@ public class playerController : MonoBehaviour {
 
     // Update is called once per frame
     void Update(){
-        float translation = Input.GetAxis("Vertical") * speed;
-        float straffe = Input.GetAxis("Horizontal") * speed;
+        translation = Input.GetAxis("Vertical") * speed;
+        straffe = Input.GetAxis("Horizontal") * speed;
         translation *= Time.deltaTime;
         straffe *= Time.deltaTime;
 
         transform.Translate(straffe, 0, translation);
 
-        if (Input.GetKeyDown("escape"))
-            Cursor.lockState = CursorLockMode.None;     
+        if (Input.GetKeyDown("escape")) Cursor.lockState = CursorLockMode.None;     
     }
 
 
