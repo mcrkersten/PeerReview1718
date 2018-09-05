@@ -80,8 +80,8 @@ public class ClockScript : MonoBehaviour {
         Debug.Log("Player 1 score: " + score.score_P1.ToString());
         Debug.Log("Player 2 score: " + score.score_P2.ToString());
 
-        string scoreString_P1 = score.score_P1.ToString() + " eggs";
-        string scoreString_P2 = score.score_P2.ToString() + " eggs";
+        private string scoreString_P1 = score.score_P1.ToString() + " eggs";
+        private string scoreString_P2 = score.score_P2.ToString() + " eggs";
 
         //winnerScreen_P1Text.text = scoreText_P1.ToString();
         //winnerScreen_P2Text.text = scoreText_P2.ToString();
