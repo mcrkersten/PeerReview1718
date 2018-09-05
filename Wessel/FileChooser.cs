@@ -23,8 +23,7 @@ public class FileChooser : MonoBehaviour {
     }
 
     //this coroutine reads .wav files and imports them into the audio list
-    private IEnumerator LoadAudioFile()
-    {
+    private IEnumerator LoadAudioFile() {
         //start reading files
         var info = new DirectoryInfo(path);
         var fileInfo = info.GetFiles("*.wav");
