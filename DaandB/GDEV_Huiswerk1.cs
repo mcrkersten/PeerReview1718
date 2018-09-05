@@ -5,21 +5,21 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour {
 
-    public float speed = 10.0f;
-    public GameObject armPickup;
-    public GameObject player;
-    public float translation;
-    public float straffe;
+    public float speed { get; set; } = 10f;
+    public GameObject armPickup { get; set; }
+    public GameObject player { get; set; }
+    public float translation { get; set; }
+    public float straffe { get; set; }
 
     // Use this for initialization
-    public void Start(){
+    private void Start(){
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
 
     // Update is called once per frame
-    public void Update(){
+    private void Update(){
         translation = Input.GetAxis("Vertical") * speed;
         straffe = Input.GetAxis("Horizontal") * speed;
         translation *= Time.deltaTime;
