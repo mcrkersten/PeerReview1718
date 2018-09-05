@@ -12,14 +12,14 @@ public class playerController : MonoBehaviour {
     public float straffe;
 
     // Use this for initialization
-    void Start(){
+    public void Start(){
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
 
     // Update is called once per frame
-    void Update(){
+    public void Update(){
         translation = Input.GetAxis("Vertical") * speed;
         straffe = Input.GetAxis("Horizontal") * speed;
         translation *= Time.deltaTime;
@@ -31,7 +31,7 @@ public class playerController : MonoBehaviour {
     }
 
 
-    void OnTriggerEnter(Collider other){
+    public void OnTriggerEnter(Collider other){
         if (other.tag == "arm"){
             Destroy(armPickup);
             player.GetComponent<ArmScript>().enabled = true;
