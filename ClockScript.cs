@@ -5,58 +5,47 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class ClockScript : MonoBehaviour {
-
+    //Public clock variables
     public GameObject clockBackground;
     public Text clockText;
 
-    public GameObject timesUpScreen;
-    public GameObject eggSpawner;
+    //Time variables
+    private int startTime = 30;
+    private int time;
+
+    public GameObject timesUpScreen, eggSpawner;
 
     //Winner screens
-    public GameObject winnerScreen_P1;
-    public GameObject winnerScreen_P2;
-    public GameObject drawScreen;
+    public GameObject winnerScreen_P1, winnerScreen_P2, drawScreen;
 
     //Win texts
-    public Text pointsTextWin_P1;
-    public Text pointsTextWin_P2;
+    public Text pointsTextWin_P1, pointsTextWin_P2;
 
     //Lose texts
-    public Text pointsTextLose_P1;
-    public Text pointsTextLose_P2;
+    public Text pointsTextLose_P1, pointsTextLose_P2;
 
     //Draw texts
-    public Text pointsTextDraw_P1;
-    public Text pointsTextDraw_P2;
+    public Text pointsTextDraw_P1, pointsTextDraw_P2;
 
     //Score displays
-    public GameObject scoreDisplay_P1;
-    public GameObject scoreDisplay_P2;
-
-    //Time variables
-    int startTime = 30;
-    int time;
+    public GameObject scoreDisplay_P1, scoreDisplay_P2;
 
     public Score score;
-    public Text scoreText_P1;
-    public Text scoreText_P2;
+    public Text scoreText_P1, scoreText_P2;
 
-    public GameObject postGameMenu;
-    public GameObject musicPlayerGame;
+    public GameObject postGameMenu, musicPlayerGame;
 
-    bool canContinue = false;
+    private bool canContinue = false;
 
-    void Start(){
+    private void Start(){
         time = startTime;
         StartCoroutine("CountdownTime");
 	}
 	
-	void Update(){}
+	private void Update(){
         clockText.text = time.ToString();
 
-        if (Input.GetKeyDown(KeyCode.Escape)){
-            ReturnToMainMenu();
-        }
+        if (Input.GetKeyDown(KeyCode.Escape)) ReturnToMainMenu();
 
         if (time == 0){
             // Stop countdown timer and activate TIME'S UP screen
@@ -75,9 +64,8 @@ public class ClockScript : MonoBehaviour {
 	}
 
     // Do I really need to explain this tho
-    IEnumerator CountdownTime (){
-        while (time > 0)
-        {
+    private IEnumerator CountdownTime (){
+        while (time > 0){
             yield return new WaitForSeconds(1);
             time--;
             //Debug.Log(time);
@@ -85,7 +73,7 @@ public class ClockScript : MonoBehaviour {
     }
 
     // Post-game screen coroutine
-    IEnumerator PostGame (){
+    private IEnumerator PostGame (){
         // Wait 2 seconds before showing the results screen
         yield return new WaitForSeconds(2);
 
@@ -119,16 +107,12 @@ public class ClockScript : MonoBehaviour {
         canContinue = true;
         if (canContinue){
             postGameMenu.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)){
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            }
-            if (Input.GetKeyDown(KeyCode.Space)){
-                ReturnToMainMenu();
-            }
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            if (Input.GetKeyDown(KeyCode.Space)) ReturnToMainMenu();
         }
     }
 
-    void ReturnToMainMenu(){
+    private void ReturnToMainMenu(){
         Destroy(musicPlayerGame);
         SceneManager.LoadScene(sceneBuildIndex: 1);
     }
