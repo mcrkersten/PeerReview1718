@@ -24,14 +24,14 @@ public class Player : MonoBehaviour {
 	}
 
 	private void Update() {
-        if (hurtDelay > 0) hurtDelay++;
-        if (hurtDelay > 20) hurtDelay = 0;
+		if (hurtDelay > 0) hurtDelay++;
+		if (hurtDelay > 20) hurtDelay = 0;
 
-        if (lockMouseMovement) look.enabled = false;
-	else {
-		look.enabled = true;
-		if(weapon.GetComponent<Weapon>()) weapon.GetComponent<Weapon>().WeaponUpdate();
-	}
+		if (lockMouseMovement) look.enabled = false;
+		else {
+			look.enabled = true;
+			if(weapon.GetComponent<Weapon>()) weapon.GetComponent<Weapon>().WeaponUpdate();
+		}
 	}
 
 	private void FixedUpdate() {
