@@ -5,12 +5,12 @@ using System.Collections;
 public class Player : MonoBehaviour {
 	//REVOLUTIE VOOR DE HAAKJES PLZ!!!
 
-	public bool lockMouseMovement;
-	public MouseLook look;
+	private bool lockMouseMovement;
+	private MouseLook look;
 
-	public Transform weapon;
+	private Transform weapon;
 
-    	public int health {
+    	public int Health {
 		get;
 		set;
 	}
@@ -19,7 +19,7 @@ public class Player : MonoBehaviour {
     	private int hurtDelay = 0;
 
 	void Start() {
-		health = 5;
+		Health = 5;
 		lastPos = transform.position;
 	}
 
@@ -38,23 +38,23 @@ public class Player : MonoBehaviour {
 		if(!lockMouseMovement && weapon.GetComponent<Weapon>()) weapon.GetComponent<Weapon>().FixedWeaponUpdate();
 	}
 
-	public bool isMoving() {
+	public bool IsMoving() {
 		Vector3 disp = transform.position - lastPos;
 		lastPos = transform.position;
 		return disp.magnitude > 0.001;
 	}
 
-	public void hurt(int i) {
+	public void Hurt(int i) {
 		hurtDelay = 1;
-		health -= i;
+		Health -= i;
 
-		if (health <= 0) {
-		    health = 0;
-		    die();
+		if (Health <= 0) {
+		    Health = 0;
+		    Die();
 		}
 	}
 
-   	 public void die() {
+   	 public void Die() {
 		lockMouseMovement = true;
 		GetComponent<CharacterMotor>().canControl = false;
 		GetComponent<MouseLook>().enabled = false;
