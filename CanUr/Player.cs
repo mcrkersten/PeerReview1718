@@ -54,7 +54,7 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-   	public void Die() {
+	public void Die() {
 		lockMouseMovement = true;
 		GetComponent<CharacterMotor>().canControl = false;
 		GetComponent<MouseLook>().enabled = false;
