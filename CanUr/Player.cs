@@ -28,10 +28,10 @@ public class Player : MonoBehaviour {
         if (hurtDelay > 20) hurtDelay = 0;
 
         if (lockMouseMovement) look.enabled = false;
-		else {
-			look.enabled = true;
-			if(weapon.GetComponent<Weapon>()) weapon.GetComponent<Weapon>().WeaponUpdate();
-		}
+	else {
+		look.enabled = true;
+		if(weapon.GetComponent<Weapon>()) weapon.GetComponent<Weapon>().WeaponUpdate();
+	}
 	}
 
 	void FixedUpdate() {
@@ -54,7 +54,7 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-   	 public void Die() {
+   	public void Die() {
 		lockMouseMovement = true;
 		GetComponent<CharacterMotor>().canControl = false;
 		GetComponent<MouseLook>().enabled = false;
