@@ -18,12 +18,12 @@ public class Player : MonoBehaviour {
 	private Vector3 lastPos;
     	private int hurtDelay = 0;
 
-	void Start() {
+	private void Start() {
 		Health = 5;
 		lastPos = transform.position;
 	}
 
-	void Update() {
+	private void Update() {
         if (hurtDelay > 0) hurtDelay++;
         if (hurtDelay > 20) hurtDelay = 0;
 
@@ -34,7 +34,7 @@ public class Player : MonoBehaviour {
 	}
 	}
 
-	void FixedUpdate() {
+	private void FixedUpdate() {
 		if(!lockMouseMovement && weapon.GetComponent<Weapon>()) weapon.GetComponent<Weapon>().FixedWeaponUpdate();
 	}
 
