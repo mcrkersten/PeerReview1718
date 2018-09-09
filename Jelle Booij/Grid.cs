@@ -41,8 +41,7 @@ public class Grid : MonoBehaviour
 
         float enter = 0.0f;
 
-        if (plane.Raycast(ray, out enter))
-        {
+        if (plane.Raycast(ray, out enter)){
             Vector3 hitPoint = ray.GetPoint(enter);
             mouseGridPosition = WorldToGridPosition(hitPoint);
         }
@@ -58,10 +57,8 @@ public class Grid : MonoBehaviour
 
         startPos = new Vector3(-(gridSize / 2) + (tileSize / 2), 0, -(gridSize / 2) + (tileSize / 2));
 
-        for (int x = 0; x < numTilesSqrt; x++)
-        {
-            for (int y = 0; y < numTilesSqrt; y++)
-            {
+        for (int x = 0; x < numTilesSqrt; x++){
+            for (int y = 0; y < numTilesSqrt; y++){
                 grid[x, y] = new Node();
                 grid[x, y].position = startPos + (Vector3.forward * tileSize * y) + (Vector3.right * tileSize * x);
                 grid[x, y].gridPosition = new Vector2Int(x, y);
@@ -96,8 +93,7 @@ public class Grid : MonoBehaviour
     }
 
 
-    public float WorldToGridSize(float worldSize)
-    {
+    public float WorldToGridSize(float worldSize){
         return worldSize * (gridSize / numTilesSqrt);
     }
     //==============================================================
@@ -119,27 +115,23 @@ public class Grid : MonoBehaviour
 
         Node[,] temp = new Node[sx, sy];
 
-        for (int x = 0; x < sx; x++)
-        {
-            for (int y = 0; y < sy; y++)
-            {
+        for (int x = 0; x < sx; x++){
+            for (int y = 0; y < sy; y++){
                 int nx = Mathf.Clamp(origin.x + x, 0, numTilesSqrt - 1);
                 int ny = Mathf.Clamp(origin.y + y, 0, numTilesSqrt - 1);
                 temp[x, y] = grid[nx, ny];
             }
         }
+
         return temp;
     }
 
 
     public bool Overlap(Node[,] nodes){
 
-        for (int x = 0; x < nodes.GetLength(0); x++)
-        {
-            for (int y = 0; y < nodes.GetLength(1); y++)
-            {
-                if (nodes[x, y].Taken)
-                {
+        for (int x = 0; x < nodes.GetLength(0); x++){
+            for (int y = 0; y < nodes.GetLength(1); y++){
+                if (nodes[x, y].Taken){
                     return true;
                 }
             }
@@ -151,10 +143,8 @@ public class Grid : MonoBehaviour
 
     public void SetTaken(Node[,] nodes){
 
-        for (int x = 0; x < nodes.GetLength(0); x++)
-        {
-            for (int y = 0; y < nodes.GetLength(1); y++)
-            {
+        for (int x = 0; x < nodes.GetLength(0); x++){
+            for (int y = 0; y < nodes.GetLength(1); y++){
                 nodes[x, y].Taken = true;
             }
         }
@@ -163,13 +153,10 @@ public class Grid : MonoBehaviour
 
     private void OnDrawGizmos(){
 
-        if (grid == null || DrawGrid == false)
-            return;
+        if (grid == null || DrawGrid == false) return;
 
-        for (int x = 0; x < grid.GetLength(0); x++)
-        {
-            for (int y = 0; y < grid.GetLength(1); y++)
-            {
+        for (int x = 0; x < grid.GetLength(0); x++){
+            for (int y = 0; y < grid.GetLength(1); y++){
                 Gizmos.color = Color.black;
                 Gizmos.DrawWireCube(grid[x, y].position, tileSize * new Vector3(1, 0, 1));
                 Gizmos.color = (grid[x, y].Taken) ? Color.red : Color.white;
@@ -177,4 +164,5 @@ public class Grid : MonoBehaviour
             }
         }
     }
+
 }
