@@ -19,6 +19,7 @@ public class CameraMove : MonoBehaviour {
 
     private float xAxisClamp = 0;
 
+
 	// Mouse input in the update function as well as the rotatecamera function
 	private void Update () {
         Cursor.lockState = CursorLockMode.Locked;
@@ -31,6 +32,7 @@ public class CameraMove : MonoBehaviour {
             RotateCamera();
         }
 	}
+
 
     private void RotateCamera(){
         rotAmountX = mouseX * mouseSensitivity;
