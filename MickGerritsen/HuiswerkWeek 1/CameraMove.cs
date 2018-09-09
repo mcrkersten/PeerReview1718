@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour {
     [SerializeField]
-    private Transform Player;
+    private Transform player;
     [SerializeField]
     private float mouseSensitivity;
 
@@ -36,7 +36,7 @@ public class CameraMove : MonoBehaviour {
         rotAmountX = mouseX * mouseSensitivity;
         rotAmountY = mouseY * mouseSensitivity;
         targetRotCam = transform.rotation.eulerAngles;
-        targetRotPlayer = Player.rotation.eulerAngles;
+        targetRotPlayer = player.rotation.eulerAngles;
 
         xAxisClamp -= rotAmountY;
 
@@ -45,9 +45,7 @@ public class CameraMove : MonoBehaviour {
         targetRotPlayer.y += rotAmountX;
 
         //The cam must stay between the two max rotations on the x axis. These lines fixes that
-        if (GameObject.Find("Player").GetComponent<ClimbUp>().camReset){
-            xAxisClamp = 0;
-        }
+        if (GameObject.Find("Player").GetComponent<ClimbUp>().camReset) xAxisClamp = 0;
         if (xAxisClamp > 90 ){
             xAxisClamp = 90;
             targetRotCam.x = 90;
@@ -57,6 +55,6 @@ public class CameraMove : MonoBehaviour {
         }
 
         transform.rotation = Quaternion.Euler(targetRotCam);
-        Player.rotation = Quaternion.Euler(targetRotPlayer);
+        player.rotation = Quaternion.Euler(targetRotPlayer);
     }
 }
