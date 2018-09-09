@@ -5,7 +5,11 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour {
 
-    public float speed { get; set; } = 10f;
+    [SerializeField] private float _speed { get; set; } = 10f;
+    public float Speed {
+        get { return (_speed); }
+        set { Speed = value; }
+    }
     public GameObject armPickup { get; set; }
     public GameObject player { get; set; }
     public float translation { get; set; }
