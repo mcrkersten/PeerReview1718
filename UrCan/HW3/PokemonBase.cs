@@ -11,6 +11,9 @@ public class PokemonBase {
 	public int Health {
 		get;set;
 	}
+	public int Attack {
+		get;set;
+	}
 	public int Defense {
 		get;set;
 	}
