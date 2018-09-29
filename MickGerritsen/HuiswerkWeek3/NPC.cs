@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPC : MonoBehaviour {
+public class NPC : MonoBehaviour, IDamagable {
     public string name;
     private int level;
-    [SerializeField]
-    private int health;
+    int IDamagable.health { get; set; }
     private bool IsAttackable;
     public Weapon weapon;
     public Transform player;
@@ -39,5 +38,9 @@ public class NPC : MonoBehaviour {
     public void Move() {
         //Raycast
         //State-system AI that moves according to the distance to the player
+    }
+
+    public void TakeDamage(int amount) {
+        throw new System.NotImplementedException();
     }
 }

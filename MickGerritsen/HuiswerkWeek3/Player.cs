@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour, IDamagable {
     private int level;
     private int experience;
-    public int health;
+    int IDamagable.health { get; set; }
     private int mana;
     private int strength;
     private int magic;
@@ -23,8 +23,12 @@ public class Player : MonoBehaviour {
 		//Moving
 	}
     public void Die() {
-        if (health <= 0) {
+        if (IDamagable.health <= 0) {
             //Game Over Screen and make player unable to move because he died
         }
+    }
+
+    public void TakeDamage(int amount) {
+        throw new System.NotImplementedException();
     }
 }
